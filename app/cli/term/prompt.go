@@ -65,24 +65,7 @@ func GetUserKeyInput() (rune, error) {
 }
 
 func ConfirmYesNo(fmtStr string, fmtArgs ...interface{}) (bool, error) {
-	color.New(ColorHiMagenta, color.Bold).Printf(fmtStr+" (y)es | (n)o", fmtArgs...)
-	color.New(ColorHiMagenta, color.Bold).Print("> ")
-
-	char, err := GetUserKeyInput()
-	if err != nil {
-		return false, fmt.Errorf("failed to get user input: %s", err)
-	}
-
-	fmt.Println(string(char))
-	if char == 'y' || char == 'Y' {
-		return true, nil
-	} else if char == 'n' || char == 'N' {
-		return false, nil
-	} else {
-		fmt.Println()
-		color.New(ColorHiRed, color.Bold).Print("Invalid input.\nEnter 'y' for yes or 'n' for no.\n\n")
-		return ConfirmYesNo(fmtStr, fmtArgs...)
-	}
+	return true, nil
 }
 
 func ConfirmYesNoCancel(fmtStr string, fmtArgs ...interface{}) (bool, bool, error) {
